@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec test.js",
+    "test": "mocha -w --reporter spec test.js",
     "grade": "mocha --reporter spec --timeout 300 test.js",
     "db-init": "pg-init checkpoint_practice_express",
     "postinstall": "npm run db-init"

@@ -42,7 +42,7 @@ describe('fake library app', function () {
     return db.sync({force: true});
   });
 
-  xit('sirve archivos estáticos (de la carpeta static en la carpeta public) en la ruta /files', function (done) {
+  it('sirve archivos estáticos (de la carpeta static en la carpeta public) en la ruta /files', function (done) {
     agent
     .get('/files/index.html')
     .expect(200)
@@ -56,7 +56,7 @@ describe('fake library app', function () {
     });
   });
 
-  xit('maneja errores internos del sevidor', function (done) {
+  it('maneja errores internos del sevidor', function (done) {
     // en una verdadera aplicación, esta ruta no existiría
     // esta aquí solo para testear como disparar y manejar errores en una apliación de express
     agent
@@ -64,7 +64,7 @@ describe('fake library app', function () {
     .expect(500, done);
   });
 
-  xit('handles custom errors', function (done) {
+  it('handles custom errors', function (done) {
     // En una aplicación de verdad, esta ruta no existiría
     // esta aquí solo para testear como disparar y manejar errores una aplicación de express
     agent
@@ -116,7 +116,7 @@ describe('fake library app', function () {
         });
       });
 
-      xit('GET todos', function (done) {
+      it('GET todos', function (done) {
         agent
         .get('/api/books')
         .expect(200)
@@ -128,7 +128,7 @@ describe('fake library app', function () {
         });
       });
 
-      xit('POST uno', function (done) {
+      it('POST uno', function (done) {
         agent
         .post('/api/books')
         .send({
@@ -150,7 +150,7 @@ describe('fake library app', function () {
         });
       });
 
-      xit('GET uno', function (done) {
+      it('GET uno', function (done) {
         agent
         .get('/api/books/' + book.id)
         .expect(200)
@@ -161,21 +161,21 @@ describe('fake library app', function () {
         });
       });
 
-      xit('GET uno que no existe', function (done) {
+      it('GET uno que no existe', function (done) {
         agent
         .get('/api/books/12345')
         .expect(404)
         .end(done);
       });
 
-      xit('GET uno con id invalido', function (done) {
+      it('GET uno con id invalido', function (done) {
         agent
         .get('/api/books/clearlynotanid')
         .expect(500)
         .end(done);
       });
 
-      xit('PUT uno', function (done) {
+      it('PUT uno', function (done) {
         agent
         .put('/api/books/' + book.id)
         .send({
@@ -195,7 +195,7 @@ describe('fake library app', function () {
         });
       });
 
-      xit('PUT uno que no existe', function (done) {
+      it('PUT uno que no existe', function (done) {
         agent
         .put('/api/books/54321')
         .send({title: 'Attempt To Update Book Title'})
@@ -203,7 +203,7 @@ describe('fake library app', function () {
         .end(done);
       });
 
-      xit('PUT usando un id invalido', function (done) {
+      it('PUT usando un id invalido', function (done) {
         agent
         .put('/api/books/clearlynotanid')
         .send({title: 'Attempt To Update Book Title'})
@@ -211,7 +211,7 @@ describe('fake library app', function () {
         .end(done);
       });
 
-      xit('DELETE uno', function (done) {
+      it('DELETE uno', function (done) {
         agent
         .delete('/api/books/' + book.id)
         .expect(204)
@@ -226,21 +226,21 @@ describe('fake library app', function () {
         });
       });
 
-      xit('DELETE uno que no existe', function (done) {
+      it('DELETE uno que no existe', function (done) {
         agent
         .delete('/api/books/13579')
         .expect(404)
         .end(done);
       });
 
-      xit('DELETE uno usando un id invalido', function (done) {
+      it('DELETE uno usando un id invalido', function (done) {
         agent
         .delete('/api/books/clearlynotanid')
         .expect(500)
         .end(done);
       });
 
-      xit('GET con un query string de filtro', function (done) {
+      it('GET con un query string de filtro', function (done) {
         agent
         // recordá que en query strings %20 significa un caracter de espacio
         .get('/api/books?title=Best%20Book%20Ever')
@@ -423,7 +423,7 @@ describe('fake library app', function () {
             })
             .catch(done);
           });
-        });
+        }); 
 
         xit('DELETE uno que no existe', function (done) {
           agent
